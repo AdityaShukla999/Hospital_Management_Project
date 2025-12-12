@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Book Appointment{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-center mt-4">
+    <div class="card hms-card" style="width: 600px;">
+        <div class="card-body">
+
+            <h3 class="mb-4 text-center">Book Appointment</h3>
+
+            <form method="GET">
+                <label class="form-label fw-bold">Select Date</label>
+
+                <select name="date" class="form-control mb-4" onchange="this.form.submit()">
+                    <option selected disabled>-- Select Date --</option>
+
+                    {% for dt in available_dates %}
+                        <option value="{{ dt }}" {% if dt == selected_date %} selected {% endif %}>
+                            {{ dt }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </form>
+
+            {% if selected_date %}
+            <form method="POST">
+                <input type="hidden" name="date" value="{{ selected_date }}">
+
+                <label class="form-label fw-bold">Available Slots</label>
+                <select name="time" class="form-control mb-4" required>
+
+                    {% if available_slots and available_slots|length > 0 %}
+                        <option disabled selected>-- Select Slot --</option>
+                        {% for slot in available_slots %}
+                            <option value="{{ slot }}">{{ slot }}</option>
+                        {% endfor %}
+                    {% else %}
+                        <option disabled selected>No Slots Available</option>
+                    {% endif %}
+
+                </select>
+
+                {% if available_slots and available_slots|length > 0 %}
+                    <button type="submit" class="btn hms-btn-primary w-100">
+                        Confirm Booking
+                    </button>
+                {% endif %}
+            </form>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+<!-- Made with 💖 By Aditya Shukla -->

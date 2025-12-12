@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block title %}Patient Dashboard • Hospital Management System{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="mb-1">Patient Dashboard</h2>
+        <p class="text-muted mb-0">Book and manage your appointments.</p>
+    </div>
+    <a href="/edit_profile" class="btn btn-outline-primary btn-sm">Edit Profile</a>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="card hms-card h-100">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span>Upcoming Appointments</span>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table mb-0 align-middle">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Doctor</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if upcoming_appointments %}
+                            {% for appt in upcoming_appointments %}
+                                <tr>
+                                    <td>{{ appt[1] }}</td>
+                                    <td>{{ appt[2] }}</td>
+                                    <td>{{ appt[3] }}</td>  
+                                    <td>
+                                        <span class="badge bg-info">{{ appt[4] }}</span>
+                                    </td>
+                                    <td>
+                                        <a href="{{ url_for('cancel_by_patient', appointment_id=appt[0]) }}" 
+                                           class="btn btn-danger btn-sm"
+                                           onclick="return confirm('Cancel this appointment?')">
+                                           Cancel
+                                        </a>
+
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="4" class="text-center text-muted py-3">
+                                    No upcoming appointments.
+                                </td>
+                            </tr>
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card hms-card h-100">
+            <div class="card-header">
+                Past Visits & Treatments
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table mb-0 align-middle">
+                        <thead class="table-light">
+                        <tr>
+                            <th>Date</th>
+                            <th>Doctor</th>
+                            <th>Diagnosis</th>
+                            <th>Prescription</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if past_appointments %}
+                            {% for visit in past_appointments %}
+                                <tr>
+                                    <td>{{ visit[0] }}</td>
+                                    <td>{{ visit[1] }}</td>
+                                    <td>{{ visit[2] }}</td>
+                                    <td>{{ visit[3] }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="4" class="text-center text-muted py-3">
+                                    No visit history yet.
+                                </td>
+                            </tr>
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card hms-card mt-4">
+    <div class="card-header d-flex justify-content-between">
+        <span>Available Doctors</span>
+    </div>
+
+    <div class="card-body p-0">
+        <table class="table mb-0">
+            <thead class="table-light">
+            <tr>
+                <th>Doctor</th>
+                <th>Specialization</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if doctors %}
+                {% for d in doctors %}
+                <tr>
+                    <td>{{ d[0] }}</td>
+                    <td>{{ d[2] }}</td>
+                    <td>{{ d[1] }}</td>
+                    <td>
+                        <a href="{{ url_for('book_appointment', doctor_id=d[3]) }}"
+                           class="btn btn-sm btn-primary">
+                           Book
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr><td colspan="4" class="text-center">No doctors available.</td></tr>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+
+<!-- Made with 💖 By Aditya Shukla -->

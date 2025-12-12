@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4" style="max-width:600px;">
+    <h3>Edit Profile</h3>
+    <form method="POST">
+
+        <label>Name</label>
+        <input name="name" class="form-control" value="{{ data[0] }}" required>
+
+        <label class="mt-2">Age</label>
+        <input name="age" type="number" class="form-control" value="{{ data[2] }}">
+
+        <label class="mt-2">Gender</label>
+        <select name="gender" class="form-control">
+            <option value="male" {% if data[3]=='male' %}selected{% endif %}>Male</option>
+            <option value="female" {% if data[3]=='female' %}selected{% endif %}>Female</option>
+            <option value="other" {% if data[3]=='other' %}selected{% endif %}>Other</option>
+        </select>
+
+        <label class="mt-2">Contact</label>
+        <input name="contact" class="form-control" value="{{ data[4] }}">
+
+        <label class="mt-2">Address</label>
+        <textarea name="address" class="form-control">{{ data[5] }}</textarea>
+
+        <button class="btn btn-primary mt-3">Save Changes</button>
+    </form>
+</div>
+{% endblock %}
+
+
+<!-- Made with 💖 By Aditya Shukla -->

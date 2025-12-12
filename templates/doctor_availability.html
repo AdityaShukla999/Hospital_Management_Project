@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Set Availability{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center">
+    <div class="card hms-card" style="width: 650px;">
+        <div class="card-body">
+            <h3 class="mb-3 text-center">Set Availability</h3>
+
+            <form method="POST">
+                <label class="form-label">Select Date</label>
+                <input type="date" name="date" class="form-control mb-3" min="{{ min_date }}" required>
+
+                <label class="form-label">Select Time Slots</label><br>
+
+                <div class="row">
+                    {% for slot in ["09:00 AM - 10:00 AM","10:00 AM - 11:00 AM","11:00 AM - 12:00 PM",
+                                    "12:00 PM - 01:00 PM","01:00 PM - 02:00 PM","05:00 PM - 06:00 PM",
+                                    "06:00 PM - 07:00 PM","07:00 PM - 08:00 PM"] %}
+                    <div class="col-6 mb-2">
+                        <input type="checkbox" name="time_slots" value="{{ slot }}">
+                        <label>{{ slot }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <button class="btn hms-btn-primary mt-3 w-100">Add Availability</button>
+            </form>
+
+            <hr>
+            <h5 class="mt-3">Existing Slots:</h5>
+            {% if slots %}
+                <ul class="list-group">
+                    {% for s in slots %}
+                        <li class="list-group-item">{{ s[0] }} → {{ s[1] }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted text-center">No slots added yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- Made with 💖 By Aditya Shukla -->

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card p-4">
+    <h4>Add Doctor</h4>
+    <form method="POST">
+        <input class="form-control mb-2" name="name" placeholder="Doctor Name" required>
+        <input class="form-control mb-2" name="email" placeholder="Email" required>
+        <input class="form-control mb-2" name="password" placeholder="Password" required>
+        <input class="form-control mb-2" name="specialization" placeholder="Specialization" required>
+        <button class="btn hms-btn-primary w-100">Add Doctor</button>
+    </form>
+</div>
+{% endblock %}
+
+<!-- Made with 💖 By Aditya Shukla -->

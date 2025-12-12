@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-3">Search Results for "{{ query }}"</h2>
+
+<h4>Doctors</h4>
+<table class="table table-bordered">
+<tr><th>Name</th><th>Specialization</th><th>Email</th><th>Action</th></tr>
+{% for d in doctor_results %}
+<tr>
+    <td>{{ d[0] }}</td>
+    <td>{{ d[1] }}</td>
+    <td>{{ d[2] }}</td>
+    <td>
+        <a class="btn btn-sm btn-warning" href="/edit_doctor/{{ d[3] }}">Edit</a>
+        <a class="btn btn-sm btn-danger" href="/delete_doctor/{{ d[3] }}">Delete</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+<br><h4>Patients</h4>
+<table class="table table-bordered">
+<tr><th>Name</th><th>Age</th><th>Gender</th><th>Contact</th><th>Action</th></tr>
+
+{% for p in patient_results %}
+<tr>
+    <td>{{ p[0] }}</td>
+    <td>{{ p[1] }}</td>
+    <td>{{ p[2] }}</td>
+    <td>{{ p[3] }}</td>
+    <td>
+        <a href="/blacklist_patient/{{ p[4] }}" class="btn btn-danger btn-sm">Blacklist</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}
+
+<!-- Made with 💖 By Aditya Shukla -->
