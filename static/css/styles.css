@@ -1,0 +1,90 @@
+body {
+    background: #f4f7fb;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.hms-navbar {
+    background: linear-gradient(90deg, #0f8ecf, #0a6ca1);
+}
+
+.logo-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: 700;
+    margin-right: 4px;
+}
+
+.hms-main-container {
+    min-height: calc(100vh - 130px);
+}
+
+.hms-card {
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(15, 94, 138, 0.08);
+}
+
+.hms-card .card-header {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    background-color: #ffffff;
+    border-radius: 14px 14px 0 0;
+}
+
+.hms-stat-card {
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #0f8ecf, #0ab3a3);
+    color: #fff;
+    box-shadow: 0 10px 25px rgba(15, 94, 138, 0.35);
+}
+
+.hms-stat-card .text-muted {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.hms-btn-primary {
+    background: linear-gradient(135deg, #0f8ecf, #0ab3a3);
+    border: none;
+    color: #fff;
+    font-weight: 500;
+}
+
+.hms-btn-primary:hover {
+    filter: brightness(0.95);
+    color: #fff;
+}
+
+.hms-link {
+    color: #0f8ecf;
+    text-decoration: none;
+}
+
+.hms-link:hover {
+    text-decoration: underline;
+}
+
+.hms-footer {
+    background: #ffffff;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    color: #6c757d;
+}
+
+table thead {
+    font-size: 0.9rem;
+}
+
+table tbody td {
+    font-size: 0.9rem;
+}
+
+.form-control:focus {
+    border-color: #0f8ecf;
+    box-shadow: 0 0 0 0.2rem rgba(15, 142, 207, 0.25);
+}
+
+
+/* Made with 💖 By Aditya Shukla */
